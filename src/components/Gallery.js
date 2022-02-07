@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Requests from "../utils/Requests";
+import "./Gallery.css";
 
 const Gallery = () => {
 	const [media, setMedia] = useState([]);
@@ -9,25 +10,27 @@ const Gallery = () => {
 			const allMedia = response.map((item) => {
 				return { id: item.asset_id, url: item.url, format: item.format };
 			});
+
+			//Sample data
+			// let allMedia = [];
+			// for (let i = 0; i < 50; i++) {
+			// 	allMedia.push({
+			// 		id: i,
+			// 		url: "https://picsum.photos/600/500",
+			// 		format: "jpg",
+			// 	});
+			// }
 			setMedia(allMedia);
 		};
-		getMedia();
+		!media.length && getMedia();
 	});
 	return (
-		<div>
+		<div className="Gallery">
 			{media.map((item) => {
 				return item.format === "jpg" ? (
-					<img
-						width="300"
-						height="300"
-						src={item.url}
-						alt={item.id}
-						key={item.id}
-					/>
+					<img src={item.url} alt={item.id} key={item.id} />
 				) : (
 					<video
-						width="300"
-						height="300"
 						autoPlay
 						loop
 						muted

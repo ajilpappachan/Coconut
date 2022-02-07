@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
 import "./Home.css";
 
 const Home = (props) => {
@@ -8,15 +7,16 @@ const Home = (props) => {
 	});
 
 	const changeLink = (event) => {
-		window.location = `/${event.target.name}`;
+		console.log(event.target.name);
+		window.location = `/${event.target.id}`;
 	};
 
 	return (
 		<div className="Home">
-			<div name="chat" className="Home-card fullcard">
+			<div id="chat" onClick={changeLink} className="Home-card fullcard">
 				Chat
 			</div>
-			<div name="gallery" className="Home-card fullcard">
+			<div id="gallery" onClick={changeLink} className="Home-card fullcard">
 				Gallery
 			</div>
 			<div className="Home-card halfcard inactive">Games Coming Soon :D</div>

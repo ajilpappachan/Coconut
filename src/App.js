@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import Navbar from "./components/Navbar";
+import Login from "./components/Login";
+import Home from "./components/Home";
+import Chat from "./components/Chat";
+import Gallery from "./components/Gallery";
+import NotFound from "./components/NotFound";
+
+import Requests from "./utils/Requests";
+
+import "./App.css";
+
+const App = () => {
+	const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+
+	const login = async (user) => {
+		const response = await Requests.login(user);
+		setUser(response._id);
+		localStorage.setItem("user", JSON.stringify(response));
+		window.location = "/home";
+	};
+
+	return (
+		<div className="App">
+			{user && <Navbar />}
+			<Routes>
+				<Route path="/" element={<Home user={user} />} />
+				<Route path="/home" element={<Home user={user} />} />
+				<Route path="/login" element={<Login login={login} />} />
+				<Route path="/chat" element={<Chat user={user} />} />
+				<Route path="gallery" element={<Gallery />} />
+				<Route path="/*" element={<NotFound />} />
+			</Routes>
+		</div>
+	);
+};
 
 export default App;

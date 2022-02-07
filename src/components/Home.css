@@ -1,0 +1,38 @@
+.Home {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.Home-card {
+	width: 100%;
+	border-radius: 20px;
+	margin: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	cursor: pointer;
+}
+
+.Home-card:nth-child(odd) {
+	background: var(--primary-color);
+}
+
+.Home-card:nth-child(even) {
+	background: var(--secondary-color);
+}
+
+.Home-card.inactive {
+	background-color: var(--dark-color);
+	cursor: not-allowed;
+}
+
+.fullcard {
+	max-width: 500px;
+	height: 200px;
+}
+
+.halfcard {
+	max-width: 250px;
+	height: 150px;
+}

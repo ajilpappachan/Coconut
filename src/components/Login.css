@@ -1,0 +1,46 @@
+.Login-container {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.Login {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.Login-title {
+	text-align: center;
+	color: var(--primary-color);
+	font-weight: bolder;
+}
+
+.Login-title img {
+	max-width: 400px;
+}
+
+.Login form > * {
+	margin: 0.6em;
+}
+
+.Login-input > * {
+	margin: 0.6em;
+	color: var(--secondary-color);
+	font-size: larger;
+}
+
+.Login-input input {
+	border-radius: 5px;
+}
+
+.Login > form button {
+	display: block;
+	width: 50%;
+	font-family: inherit;
+	margin: auto;
+	padding: 0.4em;
+	background: var(--dark-color);
+	color: white;
+}

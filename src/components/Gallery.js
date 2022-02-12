@@ -26,6 +26,7 @@ const Gallery = () => {
 	});
 	return (
 		<div className="Gallery">
+			<div class={`Gallery-loader ${media.length && "hide"}`}></div>
 			{media.map((item) => {
 				return item.format === "jpg" ? (
 					<img src={item.url} alt={item.id} key={item.id} />
